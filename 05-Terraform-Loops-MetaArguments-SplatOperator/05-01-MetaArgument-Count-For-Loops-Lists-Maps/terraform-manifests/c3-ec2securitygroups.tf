@@ -54,3 +54,7 @@ resource "aws_security_group" "vpc-web" {
   }
 }
 
+resource "aws_security_group" "name" {
+  vp
+  
+}

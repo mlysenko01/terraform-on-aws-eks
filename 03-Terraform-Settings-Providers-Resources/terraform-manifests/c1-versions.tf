@@ -20,3 +20,18 @@ Note-1:  AWS Credentials Profile (profile = "default") configured on your local 
 $HOME/.aws/credentials
 */
 
+resource "aws_vpc" "name" {
+  
+}
+resource "aws_instance" "name" {
+  instance_type = "t2.micro"
+  ami = "ami-0742b4e673072066f"
+  tags = {
+    "Name" = "EC2 Demo"
+  }
+
+}
+
+resource "aws_eks_cluster" "name" {
+  
+}
