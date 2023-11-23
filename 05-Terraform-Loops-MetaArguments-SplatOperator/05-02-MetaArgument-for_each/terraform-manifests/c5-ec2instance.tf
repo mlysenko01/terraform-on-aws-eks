@@ -1,13 +1,29 @@
+
 # Availability Zones Datasource
-data "aws_availability_zones" "my_azones" {
+/*data "aws_availability_zones" "my_azones" {
   filter {
     name   = "opt-in-status"
     values = ["opt-in-not-required"]
   }
 }
 
+*/
+
+data "aws_region" "current" {}
+
+data "aws_availability_zones" "my_azones" {
+   state = "available"
+}
+
+resource "aws_instance" "my_instance" {
+  instance_type = var.instance_type
+  ami = data.aws_ami.amzlinux2.id
+  for_each = toset(data.aws_availability_zones.my_azones.names)
+  availability_zone = each.key
+}
 
 # EC2 Instance
+
 resource "aws_instance" "myec2vm" {
   ami = data.aws_ami.amzlinux2.id
   instance_type = var.instance_type
@@ -21,3 +37,4 @@ resource "aws_instance" "myec2vm" {
     "Name" = "for_each-Demo-${each.value}"
   }
 }
+

@@ -22,12 +22,12 @@ terraform {
 # Block-2: Provider Block
 provider "aws" {
   profile = "default" # AWS Credentials Profile configured on your local desktop terminal  $HOME/.aws/credentials
-  region  = "us-east-1"
+  region  = "eu-central-1"
 }
 #####################################################################
 # Block-3: Resource Block
 resource "aws_instance" "ec2demo" {
-  ami           = "ami-04d29b6f966df1537" # Amazon Linux
+  ami           = "ami-0669b163befffbdfc" # Amazon Linux
   instance_type = var.instance_type
 }
 #####################################################################
